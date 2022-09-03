@@ -7,7 +7,7 @@ from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from django import forms
 from posts.models import Follow, Group, Post, User
-from posts.views import AMOUNT_POSTS
+from yatube.settings import AMOUNT_POSTS
 
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)

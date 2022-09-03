@@ -1,6 +1,7 @@
 import shutil
 import tempfile
 from django.conf import settings
+from django.core.cache import cache
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
@@ -40,6 +41,7 @@ class PostFormTest(TestCase):
         self.guest_user = Client()
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
+        cache.clear()
 
     def test_create_post(self):
         post_count = Post.objects.count()
