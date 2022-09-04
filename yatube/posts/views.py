@@ -112,7 +112,7 @@ def add_comment(request, post_id):
 @login_required
 def follow_index(request):
     title = 'Подписки'
-    posts = Post.objects.select_related('author').filter(
+    posts = Post.objects.select_related('author', 'group').filter(
         author__following__user=request.user)
     page_obj = paginate_page(request, posts)
     context = {
