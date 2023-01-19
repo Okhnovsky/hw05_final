@@ -1,15 +1,26 @@
 {% load thumbnail %}
-<ul>
-  <li>
-    Автор: {{ post.author.get_full_name }}
-    <a href="{% url 'posts:profile' post.author.username %}">все посты пользователя</a>
-  </li>
-  <li>
-    Дата публикации: {{ post.pub_date|date:"d E Y" }}
-  </li>
-</ul>
-{% thumbnail post.image "960x339" crop="center" upscale=True as im %}
-  <img class="card-img my-2" src="{{ im.url }}">
-{% endthumbnail %}
-<p>{{ post.text }}</p>
-<a href="{% url 'posts:post_detail' post.id %}">подробная информация </a>
+<div class="card my-4" style="width: 40rem;">
+  <div class="card-body">
+    <h5 class="mt-0">
+      Автор:
+      <a href="{% url 'posts:profile' post.author.username %}" style="color: hsl(0, 0%, 4%); text-decoration: none;">{{ post.author.get_full_name }}</a>
+    </h5>
+  {% thumbnail post.image "1600x900" crop="center" upscale=True as im %}
+    <img class="card-img my-2" src="{{ im.url }}">
+  {% endthumbnail %}
+  <p>{{ post.text }}</p>
+    <div class="mb-3">
+    <div class="text-muted">
+      <small>Дата публикации: {{ post.pub_date|date:"d E Y" }}</small>
+    </div>
+    </div>
+    <button type="button" class="btn btn-outline-secondary btn-sm" style="float:none;">
+      <a href="{% url 'posts:post_detail' post.id %}" style="color: hsl(0, 0%, 4%); text-decoration: none;">подробнее</a>
+    </button>
+    {% if post.group %}
+      <button type="button" class="btn btn-outline-secondary btn-sm" style="float:none;">
+        <a href = "{% url 'posts:group_list' post.group.slug %}" style="color: black; text-decoration: none;">все записи группы</a>
+      </button>
+    {% endif %}
+  </div>
+</div>

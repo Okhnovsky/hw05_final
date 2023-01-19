@@ -23,13 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5hg-lp6^e!l!a==kwd8krqw@se1kz^ktzi%1_)#5m5*aw!@yua'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '[::1]',
     'testserver',
+    'www.Okhnovsky.pythonanywhere.com',
+    'Okhnovsky.pythonanywhere.com',
 ]
 
 
